@@ -19,4 +19,60 @@ public class Employee {
     public boolean movedIn;
     public String cubeId;
     public LocalDate orientationDate;
+
+    public Employee(String _firstName, String _lastName, String _ssn, String _cubeId){
+        this.firstName = _firstName;
+        this.lastName = _lastName;
+        this.ssn = _ssn;
+        this.cubeId = _cubeId;
+    }
+
+    private void setMetWithHr(boolean _metWithHr) {
+        this.metWithHr = _metWithHr;
+    }
+    private boolean getMetWithHr() {
+        return this.metWithHr;
+    }
+
+    private void setMetDeptStaff(boolean _metDeptStaff) {
+        this.metDeptStaff = _metDeptStaff;
+    }
+    private boolean getMetDeptStaff() {
+        return this.reviewedDeptPolicies;
+    }
+
+    private void setReviewedDeptPolicies(boolean _reviewedDeptPolicies) {
+        this.reviewedDeptPolicies = _reviewedDeptPolicies;
+    }
+    private boolean getReviewedDeptPolicies() {
+        return this.reviewedDeptPolicies;
+    }
+
+    private void setMovedIn(boolean _movedIn) {
+        this.movedIn = _movedIn;
+    }
+
+    private String getFirstName() {
+        return this.firstName;
+    }
+
+    private String getLastName() {
+        return this.lastName;
+    }
+
+    private String getCubeId() {
+        return this.cubeId;
+    }
+
+    private String getSsn() {
+        return this.ssn;
+    }
+
+    private void setOrientationDate(LocalDate _orientationDate) {
+        this.orientationDate = _orientationDate;
+    }
+    private LocalDate getOrientationDate() {
+        return this.orientationDate;
+    }
+
 }

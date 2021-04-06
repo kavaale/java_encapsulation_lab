@@ -33,15 +33,23 @@ public class Employee {
     private String cubeId;
     private LocalDate orientationDate;
 
-    public Employee(String firstName, String lastName, String ssn) {
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.ssn = ssn;
+    public void HiringProcess(String _cubeId) {
+        meetWithHrForBenefitAndSalaryInfo();
+        meetDepartmentStaff();
+        reviewDeptPolicies();
+        moveIntoCubicle(_cubeId);
+    }
+
+    public Employee(String firstName, String lastName, String ssn, LocalDate _orientationDate) {
+        setFirstName(firstName);
+        setLastName(lastName);
+        setSsn(ssn);
+        setOrientationDate(_orientationDate);
     }
 
     // Assume this must be performed first, and assume that an employee
     // would only do this once, upon being hired.
-    public void meetWithHrForBenefitAndSalaryInfo() {
+    private void meetWithHrForBenefitAndSalaryInfo() {
         metWithHr = true;
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("M/d/yy");
         String fmtDate = formatter.format(orientationDate);
@@ -51,7 +59,7 @@ public class Employee {
 
     // Assume this must be performed second, and assume that an employee
     // would only do this once, upon being hired.
-    public void meetDepartmentStaff() {
+    private void meetDepartmentStaff() {
         metDeptStaff = true;
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("M/d/yy");
         String fmtDate = formatter.format(orientationDate);
@@ -62,7 +70,7 @@ public class Employee {
     // Assume this must be performed third. And assume that because department
     // policies may change that this method may need to be called 
     // independently from other classes.
-    public void reviewDeptPolicies() {
+    private void reviewDeptPolicies() {
         reviewedDeptPolicies = true;
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("M/d/yy");
         String fmtDate = formatter.format(orientationDate);
@@ -73,7 +81,7 @@ public class Employee {
     // Assume this must be performed fourth. And assume that because employees
     // sometimes change office locations that this method may need to be called 
     // independently from other classes.
-    public void moveIntoCubicle(String cubeId) {
+    private void moveIntoCubicle(String cubeId) {
         this.cubeId = cubeId;
         this.movedIn = true;
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("M/d/yy");
@@ -90,7 +98,9 @@ public class Employee {
     // allowed through validation.
 
     public void setFirstName(String firstName) {
-        this.firstName = firstName;
+        if(firstName.length() > 1) {
+            this.firstName = firstName;
+        }
     }
 
     public String getLastName() {
@@ -98,7 +108,9 @@ public class Employee {
     }
 
     public void setLastName(String lastName) {
-        this.lastName = lastName;
+        if(lastName.length() > 1) {
+            this.lastName = lastName;
+        }
     }
 
     public String getSsn() {
@@ -106,7 +118,9 @@ public class Employee {
     }
 
     public void setSsn(String ssn) {
-        this.ssn = ssn;
+        if(ssn.length() == 9) {
+            this.ssn = ssn;
+        }
     }
 
     public boolean hasMetWithHr() {
@@ -122,33 +136,33 @@ public class Employee {
         return metDeptStaff;
     }
 
-    public void setMetDeptStaff(boolean metDeptStaff) {
+    /*public void setMetDeptStaff(boolean metDeptStaff) {
         this.metDeptStaff = metDeptStaff;
-    }
+    }*/
 
     public boolean hasReviewedDeptPolicies() {
         return reviewedDeptPolicies;
     }
 
-    public void setReviewedDeptPolicies(boolean reviewedDeptPolicies) {
+    /*public void setReviewedDeptPolicies(boolean reviewedDeptPolicies) {
         this.reviewedDeptPolicies = reviewedDeptPolicies;
-    }
+    }*/
 
     public boolean hasMovedIn() {
         return movedIn;
     }
 
-    public void setMovedIn(boolean movedIn) {
+    /*public void setMovedIn(boolean movedIn) {
         this.movedIn = movedIn;
-    }
+    }*/
 
     public String getCubeId() {
         return cubeId;
     }
 
-    public void setCubeId(String cubeId) {
+    /*public void setCubeId(String cubeId) {
         this.cubeId = cubeId;
-    }
+    }*/
 
     public LocalDate getOrientationDate() {
         return orientationDate;
